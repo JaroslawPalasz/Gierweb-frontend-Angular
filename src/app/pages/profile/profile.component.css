@@ -1,0 +1,8 @@
+.user-card {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 16px;
+  max-width: 400px;
+}

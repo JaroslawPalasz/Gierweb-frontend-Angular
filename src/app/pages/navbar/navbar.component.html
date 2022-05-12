@@ -1,0 +1,75 @@
+<mat-toolbar color="primary" class="navbar">
+    <button mat-icon-button routerLink="/homepage">
+        <mat-icon aria-hidden="false" aria-label="Home icon">home</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <mat-icon svgIcon="logo" aria-hidden="false" aria-label="Gierweb icon" class="gierweb-icon"></mat-icon>
+    <span class="spacer"></span>
+    <a>GierWeb</a>
+    <span class="spacer"></span>
+    <mat-form-field class="search-games-field" appearance="fill">
+        <mat-label>Search for games</mat-label>
+        <input matInput type="text" [(ngModel)]="gameSearchValue">
+        <button *ngIf="gameSearchValue" matSuffix mat-icon-button aria-label="Clear" (click)="gameSearchValue=''">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <span class="spacer"></span>
+    <button (click)="Games()" mat-flat-button color="primary">Games</button>
+    <button (click)="Reviews()" mat-flat-button color="primary">Reviews</button>
+    <button (click)="Rankings()" mat-flat-button color="primary">Rankings</button>
+    <span class="spacer"></span>
+    <!-- Login or Account icon with options -->
+    <ng-container *ngIf="authService.currentUser$ | async; else loggedOut">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Account-button with menu">
+            <mat-icon aria-hidden="false" aria-label="Account icon">account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button (click)="editAccount()" mat-menu-item>
+                <mat-icon>manage_accounts</mat-icon>
+                <span>Edit Profile</span>
+              </button>
+            <button mat-menu-item>
+                <mat-icon>people</mat-icon>
+                <span>Friends</span>
+            </button>
+            <button (click)="wishlistPage()" mat-menu-item>
+                <mat-icon>view_list</mat-icon>
+                <span>Wishlist</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>reviews</mat-icon>
+                <span>My Reviews</span>
+            </button>
+            <ng-container *ngIf="isEditor">
+                <button (click)="editorPanel()" mat-menu-item>
+                    <mat-icon>mode</mat-icon>
+                    <span>Editor Panel</span>
+                </button>
+            </ng-container>
+            <ng-container *ngIf="isAdmin">
+                <button (click)="adminPanel()" mat-menu-item>
+                    <mat-icon>admin_panel_settings</mat-icon>
+                    <span>Admin Panel</span>
+                </button>
+            </ng-container>
+            <button (click)="logout()" mat-menu-item>
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+            </button>
+          </mat-menu>
+    </ng-container>
+    <ng-template #loggedOut>
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="Account-button with menu">
+            <button mat-flat-button color="primary">Login</button>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <button (click)="login()" mat-flat-button color="primary">Login</button>
+            </button>
+            <button mat-menu-item>
+                <button (click)="Register()" mat-flat-button color="primary">Register</button>
+            </button>
+        </mat-menu>
+    </ng-template>
+</mat-toolbar>

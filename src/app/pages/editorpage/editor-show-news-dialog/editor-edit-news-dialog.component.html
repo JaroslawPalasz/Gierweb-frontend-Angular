@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>News</h1>
+<mat-dialog-content [formGroup]="form">
+  <p>Input news header</p>
+  <mat-form-field appearance="fill">
+      <input matInput
+      placeholder="News header"
+      formControlName="header">
+  </mat-form-field>
+  <p>Input text</p>
+  <mat-form-field appearance="fill">
+    <textarea matInput class="scrollabletextbox"
+    placeholder="News text"
+    formControlName="text">
+    </textarea>
+    </mat-form-field>
+    <p>Link to image (optional)</p>
+  <mat-form-field appearance="fill">
+    <textarea matInput class="scrollabletextbox"
+    placeholder="image link"
+    formControlName="imageLink">
+    </textarea>
+    </mat-form-field>
+</mat-dialog-content>
+<!-- <div mat-dialog-actions> -->
+<mat-dialog-actions>
+  <button mat-flat-button class="submit-btn" type="submit" color="primary"
+    [disabled]="!form.valid" (click)="submit()">
+    Edit
+  </button>
+  <!-- <button mat-raised-button (click)="addNews()">Add</button> -->
+  <button mat-flat-button (click)="deleteNews()" color="accent">Delete</button>
+  <button mat-button (click)="close()">Close</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</mat-dialog-actions>
+<!-- </div> -->

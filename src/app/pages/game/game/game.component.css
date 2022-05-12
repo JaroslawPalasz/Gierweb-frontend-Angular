@@ -1,0 +1,80 @@
+.background-image {
+  height: auto;
+  background-size: cover;
+  width: auto;
+  /* background-image:url('copied image address'); */
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.news-card {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 16px;
+  max-width: 300px;
+  max-height: 400px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.game-card {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  vertical-align: text-top;
+  max-width: 500px;
+  max-height: 800px;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.tag-card {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 200px;
+  max-height: 1000px;
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-right: 15px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  vertical-align: text-top;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.info-card {
+  /* display: inline-block; */
+  display: inline;
+  float: right;
+  padding-right: 170px;
+  /* flex: 0 1 auto; */
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 200px;
+  max-height: 400px;
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-right: 15px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  /* float: right; */
+  overflow: hidden;
+  white-space: normal;
+}
+
+.header-img {
+  background-size: cover;
+}

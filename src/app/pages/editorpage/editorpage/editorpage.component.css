@@ -1,0 +1,40 @@
+@import "../../profile/profile.component.css";
+
+.pagination {
+  margin: 50px 25px 0 25px;
+  border-radius: 16px;
+}
+
+.news-card {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 16px;
+  max-width: 300px;
+  max-height: 108px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.news-card:after {
+  position: relative;
+}
+
+.img-container {
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+/* div {
+  opacity: 40%;
+} */

@@ -1,0 +1,12 @@
+<mat-dialog-content>
+  <ng-container *ngIf="tags">
+      <mat-chip-list cols="2" rowHeight="40px">
+          <ng-container *ngFor="let tag of tags">
+                  <mat-chip color="accent" selected>{{tag.name}}</mat-chip>
+          </ng-container>
+      </mat-chip-list>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="welcome">Edit your data</div>
+    <div class="form-container">
+      <!-- <button (click)="getCurrentUser()" mat-flat-button color="primary">Get current user test</button> -->
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Enter e-mail</mat-label>
+            <input
+              matInput
+              placeholder="pat@example.com"
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="email.invalid">{{ getEmail() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Enter First name</mat-label>
+          <input
+            matInput
+            placeholder="Firstname"
+            formControlName="firstName"
+            required
+          />
+          <mat-error *ngIf="firstName.hasError('required')"
+            >Please enter your first name</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Enter Last name</mat-label>
+          <input
+            matInput
+            placeholder="Lastname"
+            formControlName="lastName"
+            required
+          />
+          <mat-error *ngIf="lastName.hasError('required')"
+            >Please enter your last name</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Enter old password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Password"
+            formControlName="oldPassword"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="oldPassword.hasError('required')"
+            >Enter your old password</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Enter new password</mat-label>
+          <input
+            matInput
+            [type]="hide2 ? 'password' : 'text'"
+            placeholder="Password"
+            formControlName="newPassword"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hide2 = !hide2"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide2"
+          >
+            <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="newPassword.invalid">{{ getPassword() }}</mat-error>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="submit-btn"
+          type="submit"
+          color="primary"
+          [disabled]="!form.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>

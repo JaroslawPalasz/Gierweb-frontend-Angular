@@ -1,0 +1,100 @@
+    <mat-card>
+        <mat-card-title>
+            Wishlist
+        </mat-card-title>
+        <mat-card-content>
+            
+        </mat-card-content>
+    </mat-card>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Name
+            </th>
+            <td mat-cell *matCellDef="let element" class="pointer" 
+            (click)="showGame(element)">
+                {{element.name}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="tags">
+            <th mat-header-cell *matHeaderCellDef>
+                Tags
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button style="color:rgb(79, 221, 174)" 
+                (click)="showTags(element.id)">
+                    <mat-icon aria-hidden="false" aria-label="tag icon" >
+                        label
+                    </mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="steamReviewScore">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Steam Review Score %
+            </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.steamReviewScore}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="reviewScore">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Gierweb Review Score %
+            </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.reviewScore}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="publisher">
+            <th mat-header-cell *matHeaderCellDef>
+                Publishers
+            </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.publisher}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="releasedOn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Released On
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.comingSoon; else isAvailable">
+                    <div style="color:brown">
+                        Coming Soon
+                    </div>
+                </ng-container>
+                <ng-template #isAvailable>
+                    <div style="color:cadetblue">
+                        {{element.releasedOn}}
+                    </div>
+                </ng-template>
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="wishlisted">
+            <th mat-header-cell *matHeaderCellDef>
+                    on Wishlist
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <form [formGroup]="wishlisted">
+                <ng-container *ngIf="checkGameWishlist(element.id)">
+                    <button mat-icon-button color="accent" 
+                    (click)="removeFromWishlist(element.id)">
+                        <mat-icon aria-hidden="false" aria-label="Home icon" >
+                            view_list
+                        </mat-icon>
+                    </button>
+                </ng-container>
+                
+                </form>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      class="pagination">
+    </mat-paginator>

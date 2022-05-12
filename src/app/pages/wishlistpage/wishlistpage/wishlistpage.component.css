@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}
+th.mat-header-cell {
+  text-align: left;
+  max-width: 200px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis " (...)";
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+  max-width: 120px;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis " (...)";
+}
+/* cursor: pointer; */

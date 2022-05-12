@@ -1,0 +1,22 @@
+.search-games-field {
+  /* display: flex; */
+  width: 600px;
+  height: auto;
+}
+
+.navbar {
+  display: flex;
+  height: 100px;
+}
+
+.spacer {
+  flex: 0.25 1 auto;
+}
+
+.gierweb-icon {
+  display: flex;
+  transform: scale(1.5);
+  height: 75px;
+  width: 61px;
+  font-size: 100px;
+}

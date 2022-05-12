@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>News</h1>
+<mat-dialog-content>
+  <ng-container *ngIf="!news.imageLink; else isImage">
+    <mat-card class="news-card"
+    style="background: rgba(76, 175, 80, 0.1);">
+      <mat-card-title>
+        {{news.text | slice:0:24}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p class="subtext">Created on: {{ news.posted }}</p>
+      </mat-card-subtitle>
+      <mat-card-content>
+        {{news.text}}
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #isImage>
+    <mat-card class="news-card" 
+    [style.backgroundImage]="'url(' + news.imageLink + ' )'"
+    style="width: 100%;height: 150px;background: rgba(76, 175, 80, 0.1);background-size: cover;">
+        <mat-card-title>
+          {{news.text | slice:0:24}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p class="subtext">Created on: {{ news.posted }}</p>
+        </mat-card-subtitle>
+        <mat-card-content>
+          {{news.text}}
+        </mat-card-content>
+      </mat-card>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,8 @@
+@import "../../login/login.component.css";
+
+.edit-info {
+  border-radius: 16px;
+  background: lightblue;
+  color: black;
+  margin-bottom: 20px;
+}

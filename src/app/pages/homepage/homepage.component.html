@@ -1,0 +1,114 @@
+<h2><span>
+  <mat-card>
+    News
+  </mat-card>
+</span></h2>
+<!-- <mat-card> -->
+  <ng-container *ngIf="isNews">
+    <mat-grid-list cols="4" rowHeight="215px">
+      <ng-container *ngFor="let singleTile of allTiles$ | async">
+        <ng-container *ngIf="!singleTile.imageLink; else isImage">
+          <mat-grid-tile (click)="showSingleNews(singleTile)" class="news-card" 
+            [colspan]="singleTile.cols"
+            [rowspan]="singleTile.rows" 
+            [style.background]="singleTile.color"
+            style="border: solid 2px #000;padding: 5px;"
+            >
+            <!-- [style.border]="singleTile.border" -->
+            {{singleTile.text}}
+            <mat-grid-tile-header style="font-size: 150%; font-weight: bold;">
+              {{singleTile.text | slice:0:24}} 
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer style="font-size: 150%; font-weight: bold;">
+              Posted On: {{singleTile.posted}} 
+            </mat-grid-tile-footer>
+          </mat-grid-tile>
+        </ng-container>
+        <ng-template #isImage>
+          <mat-grid-tile (click)="showSingleNews(singleTile)" class="news-card" 
+              [colspan]="singleTile.cols"
+              [rowspan]="singleTile.rows" 
+              [style.backgroundImage]="'url(' + singleTile.imageLink + ' )'"
+              
+              style="width: 50%;height: 100px;background: rgba(76, 175, 80, 0.1);
+              object-fit: cover;background-size: cover;
+              border: solid 2px #000;padding: 5px;"
+              >
+              <p style="overflow: auto;">
+                {{singleTile.text}}
+              </p>
+              <mat-grid-tile-header style="font-size: 150%; font-weight: bold;">
+                {{singleTile.text | slice:0:24}}... 
+              </mat-grid-tile-header>
+              <mat-grid-tile-footer style="font-size: 150%; font-weight: bold;">
+                Posted On: {{singleTile.posted}} 
+              </mat-grid-tile-footer>
+            </mat-grid-tile>
+        </ng-template>
+      </ng-container>
+    </mat-grid-list>
+  </ng-container>
+  <mat-paginator
+    [pageSize]="8"
+    [pageSizeOptions]="[4, 8]"
+    class="pagination">
+  </mat-paginator>
+
+
+<h2 style="border-bottom: 10px solid rgb(190, 102, 30);"><span>
+  <mat-card>
+    Featured Games
+  </mat-card>
+</span></h2>
+<ng-container *ngIf="isFtGames">
+  <mat-grid-list cols="4" rowHeight="215px">
+    <ng-container *ngFor="let singleFtGame of allFtGames$ | async">
+      
+      <mat-grid-tile (click)="showSingleFtGame(singleFtGame)" class="game-card"
+      [colspan]="2"
+      [rowspan]="1"
+      [style.backgroundImage]="'url(' + singleFtGame.headerImage + ' )'"
+      style="background: rgba(76, 175, 80, 0.1);
+            border: solid 2px #000;padding: 5px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            "
+      >
+      <mat-grid-tile-header style="font-size: 150%; font-weight: bold;">
+        {{singleFtGame.name}} 
+      </mat-grid-tile-header>
+      <ng-container *ngIf=" user && checkGameWishlist(singleFtGame.id!); else notWishlisted">
+        <mat-grid-tile-footer>
+          Gierweb score: {{singleFtGame.reviewScore}}
+          <ng-container *ngIf="user">
+            <button mat-icon-button color="accent">
+              <mat-icon aria-hidden="false" aria-label="Home icon" >
+                  view_list
+              </mat-icon>
+          </button>
+          </ng-container>
+        </mat-grid-tile-footer>
+      </ng-container>
+      <ng-template #notWishlisted>
+        <mat-grid-tile-footer>
+          Gierweb score: {{singleFtGame.reviewScore}}
+          <ng-container *ngIf="user">
+            <button mat-icon-button color="warn">
+              <mat-icon aria-hidden="false" aria-label="Home icon" >
+                  view_list
+              </mat-icon>
+          </button>
+          </ng-container>
+        </mat-grid-tile-footer>
+      </ng-template>
+      
+    </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+</ng-container>
+<!-- <mat-paginator #paginator -->
+<mat-paginator
+  [pageSize]="4"
+  [pageSizeOptions]="[4, 8, 32, 96]"
+  class="pagination">
+</mat-paginator>

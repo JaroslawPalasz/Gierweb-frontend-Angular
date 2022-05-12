@@ -1,0 +1,113 @@
+<div id="print-section">
+    <ng-container>
+        <mat-card>
+            <mat-card class="user-card">
+                <mat-card-title></mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-content>
+                  <ng-container *ngIf="isFeaturedGames; else noFt">
+                    <button mat-button
+                    color="warn" (click)="deleteFeaturedGames()">
+                        Delete FeaturedGames
+                      </button>
+                  </ng-container>
+                  <ng-template #noFt>
+                    <button mat-button
+                    color="accent" (click)="createFeaturedGames()">
+                        Create FeaturedGames
+                      </button>
+                  </ng-template>
+                </mat-card-content>
+              </mat-card>
+
+              <ng-container *ngIf="isFeaturedGames">
+                  <!-- FeaturedGames object -->
+                <mat-card>
+                    <mat-card-subtitle>
+                         games featured: {{ ftGamesLength }}
+                    </mat-card-subtitle>
+                </mat-card>
+              </ng-container>
+        </mat-card>
+    </ng-container>
+  </div>
+
+
+  <mat-card>
+    <mat-card-title>
+        Users
+    </mat-card-title>
+    <mat-card-content>
+        
+    </mat-card-content>
+</mat-card>
+<table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            First name
+        </th>
+        <td mat-cell *matCellDef="let element" class="pointer" 
+        (click)="showUser(element)">
+            {{element.firstName}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Last name
+        </th>
+        <td mat-cell *matCellDef="let element" class="pointer" 
+        (click)="showUser(element)">
+            {{element.lastName}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Email
+        </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.email}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="dateCreated">
+        <th mat-header-cell *matHeaderCellDef>
+            Created On
+        </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.dateCreated}}
+        </td>
+    </ng-container>
+    
+    
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>
+            Delete
+        </th>
+        
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="canDelete; else cantDelete">
+            <button mat-icon-button color="accent" 
+            (click)="deleteUser(element.public_id)">
+                <mat-icon aria-hidden="false" aria-label="Home icon" >
+                  delete
+                </mat-icon>
+            </button>
+        </ng-container>
+        <ng-template #cantDelete>
+            <button mat-icon-button color="warn" >
+                <mat-icon aria-hidden="false" aria-label="Home icon" >
+                  delete
+                </mat-icon>
+            </button>
+        </ng-template>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  class="pagination">
+</mat-paginator>

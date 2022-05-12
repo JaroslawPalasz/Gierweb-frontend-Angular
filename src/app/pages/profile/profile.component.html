@@ -1,0 +1,19 @@
+<div id="print-section">
+    <ng-container *ngIf="user">
+      <mat-card class="user-card">
+        <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+        <mat-card-content>
+          <p class="subtext">{{ user.dateCreated }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="accent" (click)="editAccount()">
+              Edit Account
+            </button>
+          <button mat-button (click)="deleteAccount()" color="warn">
+            Delete Account
+            </button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>

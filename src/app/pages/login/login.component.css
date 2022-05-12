@@ -1,0 +1,84 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+  font-family: roboto;
+}
+
+.spacing {
+  flex-grow: 1;
+  height: 60px;
+  font-weight: 300;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-top: 30px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.welcome {
+  font-weight: 300;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 16px 16px 16px 16px;
+  margin: 10px 0px 0px 0px;
+  height: auto;
+  font-size: 1em;
+}
+
+.container {
+  text-align: center;
+  margin: auto;
+  width: auto;
+  opacity: 0.85;
+  padding-left: 35px;
+  padding-right: 35px;
+  display: flex;
+  flex-flow: column;
+}
+
+.form-container {
+  width: 500px;
+  margin: 0px auto;
+}
+
+.form-field {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.submit-btn {
+  margin-top: 18px;
+  width: 100%;
+  height: 70px;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 16px 16px 16px 16px !important;
+}
+
+.select-auto {
+  width: 100%;
+}
+
+@media (max-width: 570px) {
+  .form-container {
+    width: 100%;
+  }
+}

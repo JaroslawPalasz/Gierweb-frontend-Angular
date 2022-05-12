@@ -1,0 +1,77 @@
+<div id="print-section">
+    <ng-container *ngIf="user && role">
+      <mat-card class="user-card">
+        <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+        <mat-card-subtitle>Editor</mat-card-subtitle>
+        <mat-card-content>
+          <p class="subtext">News Contributions: {{ allNewsCount }}</p>
+          <ng-container *ngIf="isNews; else cantShow">
+            <button mat-button color="accent" (click)="hideNews()">
+              Hide News
+            </button>
+          </ng-container>
+          <ng-template #cantShow>
+            <button mat-button color="accent" (click)="showNews()">
+              Show News
+            </button>
+          </ng-template>
+          <button mat-button color="accent" (click)="createNews()">
+            Create News
+          </button>
+        </mat-card-content>
+      </mat-card>
+      
+      <ng-container *ngIf="isNews">
+        <ng-container *ngFor="let editorNews of allNews$ | async">
+          <ng-container *ngIf="!editorNews.imageLink; else isImage">
+            <mat-card (click)="editNews(editorNews)" 
+              class="news-card">
+            <mat-card-title>
+              {{editorNews.text | slice:0:24}}
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p class="subtext">Created on: {{ editorNews.posted }}</p>
+            </mat-card-subtitle>
+            <mat-card-content>
+              {{editorNews.text}}
+            </mat-card-content>
+        <!-- </div> -->
+            </mat-card>
+          </ng-container>
+        
+          <ng-template #isImage>
+          <!-- <mat-card (click)="editNews(editorNews)" 
+          class="news-card" *ngFor="let editorNews of allNews$ | async"> -->
+            <mat-card (click)="editNews(editorNews)" 
+              class="news-card" 
+              [style.backgroundImage]="'url(' + editorNews.imageLink + ' )'"
+              style="width: 100%;height: 150px;
+              background: linear-gradient(rgba(255,255,255,.5), 
+              rgba(255,255,255,.5));background-size: cover;"
+              >
+              <div class="news-card"
+              >
+                <mat-card-title>
+                  {{editorNews.text | slice:0:24}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                  <p class="subtext">Created on: {{ editorNews.posted }}</p>
+                </mat-card-subtitle>
+                <mat-card-content>
+                  {{editorNews.text}}
+                </mat-card-content>
+              </div>
+        <!-- </div> -->
+            </mat-card>
+          </ng-template>
+        </ng-container>
+        <!-- </ng-container> -->
+      </ng-container>
+    </ng-container>
+  </div>
+  <mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  class="pagination"
+></mat-paginator>

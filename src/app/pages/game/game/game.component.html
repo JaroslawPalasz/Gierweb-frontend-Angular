@@ -1,0 +1,104 @@
+<ng-container *ngIf="game">
+  <div class="background-image" [ngStyle]="{'background-image': getUrl()}">
+    <mat-card style="display: inline-block;
+    background-color: rgba(0, 0, 0, 0);">
+      <mat-card-title>{{ game.name }}</mat-card-title>
+      <mat-card class="game-card">
+        <mat-card-subtitle>Steam id: {{ game.id }}</mat-card-subtitle>
+        <p  
+        [style.backgroundImage]="'url(' + game.headerImage+ ' )'"
+        style="width: 460px;height: 215px;background-size: cover;"></p>
+        <mat-card-footer>
+          
+          
+        </mat-card-footer>
+        <mat-card-content>
+          
+          {{ game.descriptionShort }}
+          <div>
+            Show screenshots
+            <button mat-icon-button color="accent" 
+                (click)="showScreenshots()">
+                    <mat-icon aria-hidden="false" aria-label="Screenshot icon" >
+                      collections
+                    </mat-icon>
+                </button>
+          </div>
+         
+        </mat-card-content>
+        <mat-card-actions>
+            
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="game-card">
+        <mat-card-subtitle>About this game</mat-card-subtitle>
+        <mat-card-content>
+          <!-- <p class="subtext">{{ game.descriptionShort }}</p> -->
+          {{ game.description }}
+        </mat-card-content>
+        <mat-card-actions>
+            
+        </mat-card-actions>
+      </mat-card>
+      
+      <mat-card class="tag-card">
+        <!-- <mat-card-subtitle>{{ game.id }}</mat-card-subtitle> -->
+        <mat-card-content>
+          
+          <div>
+            <p>Tags:</p>
+            <ng-container *ngIf="tags">
+                <mat-chip-list cols="3" rowHeight="40px">
+                    <ng-container *ngFor="let tag of tags">
+                        <mat-chip color="accent" selected>{{tag.name}}</mat-chip>
+                    </ng-container>
+                </mat-chip-list>
+            </ng-container>
+          </div>
+        </mat-card-content>
+        
+      </mat-card>
+
+      <mat-card class="info-card">
+        <mat-card-subtitle>Publishers: {{ game.publisher }}</mat-card-subtitle>
+        <mat-card-content>
+          <!-- <p class="subtext">{{ game.descriptionShort }}</p> -->
+          <ng-container *ngIf="game.comingSoon; else isReleased">
+            <div>
+              <span style="color: brown">Coming Soon</span>
+            </div>
+          </ng-container>
+          <ng-template #isReleased>
+            <span style="color: cadetblue">Released on: {{ game.releasedOn }} </span>
+          </ng-template>
+          <p> GierWeb review score: 
+            <mat-chip color="primary" selected>{{game.reviewScore}}%</mat-chip>
+          </p>
+          <p> Steam review score: 
+            <ng-container *ngIf="steamReviewScore; else notEnoughReviews">
+              <mat-chip color="black" selected>{{game.steamReviewScore}}%</mat-chip>
+            </ng-container>
+            <ng-template #notEnoughReviews>
+              <mat-chip color="black">Not enough reviews</mat-chip>
+            </ng-template>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <ng-container 
+            *ngIf=" user && checkGameWishlist(game.id!); else notWishlisted">
+                <button mat-button color="accent" (click)="removeFromWishlist(game.id!)">
+                    Remove from wishlist
+                </button>
+            </ng-container>
+            <ng-template #notWishlisted>
+                <button mat-button (click)="addToWishlist(game.id!)" color="warn">
+                    Add to Wishlist
+                </button>
+            </ng-template>
+        </mat-card-actions>
+      </mat-card>
+
+    </mat-card>
+  </div>
+</ng-container>

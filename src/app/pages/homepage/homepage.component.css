@@ -1,0 +1,75 @@
+.pointer {
+  cursor: pointer;
+  border: solid 2px #000;
+  /* background-size: contain;
+  background-repeat: no-repeat; */
+  padding: 5px;
+}
+
+.game-card {
+  cursor: pointer;
+  border: solid 2px #000;
+  width: 260px;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.game-card-text {
+  color: black;
+}
+
+.pagination {
+  margin: 40px 25px 0 25px;
+  border-radius: 16px;
+}
+
+.news-card ::ng-deep * {
+  /* display: inline-block; */
+  /* margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 16px; */
+  /* max-width: 300px; */
+  max-width: 100%;
+  /* max-height: 108px; */
+  /* margin-bottom: 8px; */
+
+  cursor: pointer;
+  overflow: hidden;
+  /* overflow-x: hidden; */
+  white-space: break-spaces;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  /* hyphens: auto; */
+  text-overflow: ellipsis;
+  text-align: center;
+
+  /* width: 10px; */
+  /* object-fit: cover; */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+  border: solid 2px #000;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 5px;
+}
+
+.img-container {
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  /* border-bottom: 10px solid #000; */
+  border-bottom: 10px solid rgb(46, 82, 13);
+  line-height: 0.1em;
+  margin: 30px 0 10px;
+}
+
+h2 span {
+  /* background: #fff; */
+  padding: 0 10px;
+}
